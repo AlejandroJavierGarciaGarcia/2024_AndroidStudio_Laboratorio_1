@@ -1,4 +1,4 @@
-package com.example.labortorio
+package com.example.laboratotio01
 
 import org.junit.Test
 
