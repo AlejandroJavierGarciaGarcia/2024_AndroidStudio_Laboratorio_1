@@ -36,8 +36,49 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.background
 
 
+
+@Composable
+fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
+    if (shouldShowDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                shouldShowDialog.value = false
+            },
+            title = {
+                Text(text = "Actividades extracurriculares")
+            },
+            text = {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Black) // Cambia aquí el color de fondo del cuadro
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = "- Deportes: Bádminton, Atletismo, Natación y Ajedrez \n" +
+                                "- Música: Saxofón y clarinete"
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        shouldShowDialog.value = false
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
+                ) {
+                    Text(
+                        text = "Cerrar",
+                        color = Color.White
+                    )
+                }
+            }
+        )
+    }
+}
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +95,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
@@ -93,9 +133,10 @@ fun Greeting(modifier: Modifier = Modifier) {
         }
         Button(
             onClick = { shouldShowDialog.value = true },
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
             modifier = Modifier.wrapContentSize()
         ) {
-            Text(text = "Mostrar diálogo")
+            Text(text = "Más información")
         }
     }
 
@@ -131,30 +172,5 @@ fun GreetingPreview() {
             )
         }
     }
-}
 
-@Composable
-fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
-    if (shouldShowDialog.value) { // 2
-        AlertDialog( // 3
-            onDismissRequest = { // 4
-                shouldShowDialog.value = false
-            },
-            // 5
-            title = { Text(text = "Cuadro de diálogo de alerta") },
-            text = { Text(text = "Cuadro de diálogo de alerta de Jetpack Compose") },
-            confirmButton = { // 6
-                Button(
-                    onClick = {
-                        shouldShowDialog.value = false
-                    }
-                ) {
-                    Text(
-                        text = "Confirmar",
-                        color = Color.White
-                    )
-                }
-            }
-        )
-    }
 }
