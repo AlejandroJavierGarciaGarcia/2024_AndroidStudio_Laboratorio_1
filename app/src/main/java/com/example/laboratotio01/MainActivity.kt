@@ -38,6 +38,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.background
+import androidx.compose.ui.res.stringResource
+
 
 
 
@@ -49,17 +51,15 @@ fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
                 shouldShowDialog.value = false
             },
             title = {
-                Text(text = "Actividades extracurriculares")
+                Text(text = stringResource(R.string.titleMoreInfo))
             },
             text = {
                 Box(
                     modifier = Modifier
-                        .background(Color.Black) // Cambia aquí el color de fondo del cuadro
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = "- Deportes: Bádminton, Atletismo, Natación y Ajedrez \n" +
-                                "- Música: Saxofón y clarinete"
+                        text = stringResource(R.string.descriptionMoreInfo)
                     )
                 }
             },
@@ -71,14 +71,17 @@ fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
                 ) {
                     Text(
-                        text = "Cerrar",
+                        text = stringResource(R.string.closeMoreInfo),
                         color = Color.White
                     )
                 }
-            }
+            },
+            containerColor = Color.White
         )
     }
 }
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +105,7 @@ fun Greeting(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
         Text(
-            text = "\nLaboratorio #1 - Plataformas móviles",
+            text = stringResource(R.string.title),
             fontSize = 30.sp,
             lineHeight = 50.sp,
             textAlign = TextAlign.Center,
@@ -110,17 +113,12 @@ fun Greeting(modifier: Modifier = Modifier) {
             fontStyle = FontStyle.Italic,
         )
         Text(
-            text = "\nMi nombre es Alejandro García, actual estudiante de la Universidad del Valle" +
-                    " de Guatemala, de Ingeniería en Ciencia de la Computación y " +
-                    "Tecnologías de la Información, con altas expectativas " +
-                    "por innovar el campo tecnológico y computacional. " +
-                    "Además, tengo el objetivo contribuir positivamente " +
-                    "en el desarrollo sostenible del país; desempeñando " +
-                    "con excelencia, disciplina, responsabilidad y " +
-                    "constancia, actividades y proyectos afines a " +
-                    "la programación, los sistemas de bases de datos, l" +
-                    "a tecnología de vanguardia y el desarrollo web, entre " +
-                    "otros.",
+            text =  stringResource(R.string.description1),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text =  stringResource(R.string.description2),
             fontSize = 16.sp,
             textAlign = TextAlign.Center
         )
@@ -136,7 +134,7 @@ fun Greeting(modifier: Modifier = Modifier) {
             colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
             modifier = Modifier.wrapContentSize()
         ) {
-            Text(text = "Más información")
+            Text(text = stringResource(R.string.moreInfo))
         }
     }
 

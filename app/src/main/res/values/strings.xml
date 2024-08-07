@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Laboratotio01</string>
+    <string name="title">Laboratorio #1 Plataformas Móviles</string>
+    <string name="description1">"\nMi nombre es Alejandro García, actual estudiante de la Universidad del Valle"
+                    " de Guatemala, de Ingeniería en Ciencia de la Computación y "
+                    "Tecnologías de la Información, con altas expectativas "
+                    "por innovar el campo tecnológico y computacional. "</string>
+    <string name="description2">"\nAdemás, tengo el objetivo contribuir positivamente "
+                    "en el desarrollo sostenible del país; desempeñando "
+                    "con excelencia, disciplina, responsabilidad y "
+                    "constancia, actividades y proyectos afines a "
+                    "la programación, los sistemas de bases de datos, la"
+                    " tecnología de vanguardia y el desarrollo web, entre "
+                    "otros.\n"</string>
+    <string name="moreInfo">Más información</string>
+    <string name="titleMoreInfo">Actividades extracurriculares</string>
+    <string name="descriptionMoreInfo">"- Deportes: Bádminton, Atletismo, Natación y Ajedrez \n"
+                                "- Música: Saxofón y clarinete"</string>
+    <string name="closeMoreInfo">Cerrar</string>
+
 </resources>
