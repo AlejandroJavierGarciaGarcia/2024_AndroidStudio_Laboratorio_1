@@ -36,6 +36,50 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.background
+import androidx.compose.ui.res.stringResource
+
+
+
+
+@Composable
+fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
+    if (shouldShowDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                shouldShowDialog.value = false
+            },
+            title = {
+                Text(text = stringResource(R.string.titleMoreInfo))
+            },
+            text = {
+                Box(
+                    modifier = Modifier
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.descriptionMoreInfo)
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        shouldShowDialog.value = false
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
+                ) {
+                    Text(
+                        text = stringResource(R.string.closeMoreInfo),
+                        color = Color.White
+                    )
+                }
+            },
+            containerColor = Color.White
+        )
+    }
+}
 
 
 class MainActivity : ComponentActivity() {
@@ -55,14 +99,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
     Column(modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
         Text(
-            text = "\nLaboratorio #1 - Plataformas móviles",
+            text = stringResource(R.string.title),
             fontSize = 30.sp,
             lineHeight = 50.sp,
             textAlign = TextAlign.Center,
@@ -70,17 +113,12 @@ fun Greeting(modifier: Modifier = Modifier) {
             fontStyle = FontStyle.Italic,
         )
         Text(
-            text = "\nMi nombre es Alejandro García, actual estudiante de la Universidad del Valle" +
-                    " de Guatemala, de Ingeniería en Ciencia de la Computación y " +
-                    "Tecnologías de la Información, con altas expectativas " +
-                    "por innovar el campo tecnológico y computacional. " +
-                    "Además, tengo el objetivo contribuir positivamente " +
-                    "en el desarrollo sostenible del país; desempeñando " +
-                    "con excelencia, disciplina, responsabilidad y " +
-                    "constancia, actividades y proyectos afines a " +
-                    "la programación, los sistemas de bases de datos, l" +
-                    "a tecnología de vanguardia y el desarrollo web, entre " +
-                    "otros.",
+            text =  stringResource(R.string.description1),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text =  stringResource(R.string.description2),
             fontSize = 16.sp,
             textAlign = TextAlign.Center
         )
@@ -93,9 +131,10 @@ fun Greeting(modifier: Modifier = Modifier) {
         }
         Button(
             onClick = { shouldShowDialog.value = true },
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
             modifier = Modifier.wrapContentSize()
         ) {
-            Text(text = "Mostrar diálogo")
+            Text(text = stringResource(R.string.moreInfo))
         }
     }
 
@@ -131,30 +170,5 @@ fun GreetingPreview() {
             )
         }
     }
-}
 
-@Composable
-fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
-    if (shouldShowDialog.value) { // 2
-        AlertDialog( // 3
-            onDismissRequest = { // 4
-                shouldShowDialog.value = false
-            },
-            // 5
-            title = { Text(text = "Cuadro de diálogo de alerta") },
-            text = { Text(text = "Cuadro de diálogo de alerta de Jetpack Compose") },
-            confirmButton = { // 6
-                Button(
-                    onClick = {
-                        shouldShowDialog.value = false
-                    }
-                ) {
-                    Text(
-                        text = "Confirmar",
-                        color = Color.White
-                    )
-                }
-            }
-        )
-    }
 }
